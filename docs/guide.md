@@ -96,7 +96,7 @@ Steps 4 and 5 involve training, an advanced topic. They are covered in the "Adva
 
 ### Your first project
 
-This is step 1 of the ladder, done for real. You test MedGemma on one simple question, "Is there fluid around the lungs in this X-ray?", using 20 chest X-rays you pick yourself. Everything is in our project repo, in the [`first-project`](../first-project/) folder: a ready-to-run Colab notebook ([`first_project_colab.ipynb`](../first-project/first_project_colab.ipynb)), plus one script per step if you'd rather run it on your own computer.
+This is step 1 of the ladder, done for real. You test MedGemma on one simple question, "Is there fluid around the lungs in this X-ray?", using 20 chest X-rays you pick yourself. Everything is in our project repo, in the [`first-project`](../first-project/) folder: a ready-to-run MedGemma practice notebook for Colab ([`medgemma_practice.ipynb`](../first-project/medgemma_practice.ipynb)), plus one script per step if you'd rather run it on your own computer.
 
 ![The first project in our repo: folder first-project/](images/06-first-project.png)
 

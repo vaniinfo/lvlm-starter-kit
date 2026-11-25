@@ -5,7 +5,7 @@ A starter kit for students who want to do research with large vision-language mo
 - **The guide** (models, datasets, agents, and how to approach a project): [`docs/guide.md`](docs/guide.md)
 - **Your first project** (hands-on, about one week): see [`first-project/`](first-project/README.md)
 
-**Try it now:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/first-project/first_project_colab.ipynb)
+**Try it now:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/first-project/medgemma_practice.ipynb)
 
 ## What's in this repo
 
@@ -18,7 +18,7 @@ A starter kit for students who want to do research with large vision-language mo
 │   └── images/            ← its diagrams and charts
 └── first-project/
     ├── README.md          ← step-by-step instructions
-    ├── first_project_colab.ipynb ← ready-to-run notebook: start here
+    ├── medgemma_practice.ipynb   ← MedGemma practice notebook (Colab): start here
     ├── 01_pick_images.py  ← build a small test set from ChestX-ray14
     ├── 02_ask_medgemma.py ← ask MedGemma a yes/no question about each image
     └── 03_score.py        ← compare its answers to the real labels
