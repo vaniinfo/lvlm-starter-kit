@@ -1,0 +1,24 @@
+# Medical images and model outputs: never commit these
+data/
+results/
+*.png
+*.jpg
+*.jpeg
+*.dcm
+*.nii
+*.nii.gz
+*.tar.gz
+
+# Secrets
+.env
+*.token
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
