@@ -14,7 +14,8 @@
 
 Everything in one place, with no downloads to your own computer:
 
-1. Go to [colab.research.google.com](https://colab.research.google.com) → **File → Upload notebook** → choose [`first_project_colab.ipynb`](first_project_colab.ipynb) from this folder.
+1. Click [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/first-project/first_project_colab.ipynb) to open it in Colab. (Or go to [colab.research.google.com](https://colab.research.google.com) → **File → Upload notebook** → choose [`first_project_colab.ipynb`](first_project_colab.ipynb).)
+   Then use **File → Save a copy in Drive** so your changes are saved.
 2. Follow the "Before you start" box at the top (turn on the free GPU, get MedGemma access).
 3. Run each cell with **Shift + Enter**.
 
