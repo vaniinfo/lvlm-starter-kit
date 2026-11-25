@@ -18,7 +18,7 @@ Everything in one place, with no downloads to your own computer:
 2. Follow the "Before you start" box at the top (turn on the free GPU, get MedGemma access).
 3. Run each cell with **Shift + Enter**.
 
-The notebook downloads the X-rays itself, shows you the 20 test images, asks MedGemma about each one, scores it, and shows you the images it got wrong. The scripts below do the same steps if you'd rather run things on your own machine.
+The notebook downloads the X-rays itself, shows you the 20 test images, asks MedGemma about each one, scores it, and shows you the images it got wrong. An optional **Step 5** then compares four prompt styles (plain yes/no, a definition, describe-then-decide, and a 0 to 100 confidence number) on a tuning set, and checks the winner on fresh images. The scripts below do the same steps if you'd rather run things on your own machine.
 
 ## Running it with the scripts instead
 

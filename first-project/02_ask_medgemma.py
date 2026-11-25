@@ -71,7 +71,7 @@ def main():
                 {"type": "image", "image": image},
             ]},
         ]
-        output = pipe(text=messages, max_new_tokens=20)
+        output = pipe(text=messages, max_new_tokens=20, do_sample=False)  # same answer every run
         reply = output[0]["generated_text"][-1]["content"]
         answer = to_yes_no(reply)
         results.append([row["image"], row["truth"], answer, reply.strip()])

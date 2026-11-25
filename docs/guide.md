@@ -101,11 +101,19 @@ This is step 1 of the ladder, done for real. You test MedGemma on one simple que
 
 The score shows how often it **caught** a real case, **missed** one, or raised a **false alarm**. Then change one thing (the question's wording, the finding, or the model), rerun, and compare. Twenty images is a demo, not a result: one image changes the score by 5 percentage points.
 
+### Better prompts: step 2 of the ladder in action
+
+The wording of the question alone can change the score. The notebook's optional Step 5 asks MedGemma the same question four ways and compares the results.
+
+![Four prompt styles compared in the notebook's optional Step 5](images/07-better-prompts.png)
+
+Two rules keep the comparison honest. Use enough images (25 + 25 per set, not 20 in total), so a "win" isn't just luck. And never pick the winner and grade it on the same images: choose on a tuning set, then confirm on fresh images it has never seen.
+
 ## 4. How results are scored
 
 You can't say a model is good without a score, and in medicine the *kind* of mistake matters. Every yes/no answer lands in one of four boxes.
 
-![How a yes/no medical AI is scored](images/07-how-results-are-scored.png)
+![How a yes/no medical AI is scored](images/08-how-results-are-scored.png)
 
 - **Accuracy can fool you.** If only 5 in 100 X-rays show disease, a model that always says "healthy" scores 95% while catching nothing. Always look at the next two numbers too.
 - **Sensitivity vs. specificity is a trade-off.** Make the model say "yes" more easily and it misses fewer real cases (higher sensitivity) but raises more false alarms (lower specificity). For a screening tool, missing a sick patient is usually the worse mistake.
@@ -113,7 +121,7 @@ You can't say a model is good without a score, and in medicine the *kind* of mis
 
 ## 5. Available models
 
-![Map of available medical VLMs and agents by scan type](images/08-available-models.png)
+![Map of available medical VLMs and agents by scan type](images/09-available-models.png)
 
 Models come in three layers. All-rounders handle many scan types, specialists are built for one, and agents sit on top and use both as tools. The lists below give more detail on each group. Agents have their own section further down.
 
@@ -182,7 +190,7 @@ An agent is not one model. It is a system where a language model acts as the man
 
 **Analogy:** a single VLM is one doctor glancing at a scan. An agent is the attending physician running a care team: order the lab test, ask the radiologist, call a specialist, compare their answers, then decide.
 
-![How a chest X-ray agent like MedRAX works](images/09-how-an-agent-works.png)
+![How a chest X-ray agent like MedRAX works](images/10-how-an-agent-works.png)
 
 The manager hands the scan to each specialist tool, gathers what they found, and writes one answer. Because every step is recorded, a doctor can see exactly how it got there.
 
@@ -215,9 +223,9 @@ The manager hands the scan to each specialist tool, gathers what they found, and
 
 An AI is only as good as the examples it learns from, and medical images are hard to share because they belong to real patients. The datasets below have been "de-identified" (names and personal details removed) and released for research. The sizes explain a lot: chest X-ray has hundreds of thousands of examples, CT has tens of thousands, and MRI has far fewer. That is the same order as how mature each group of models is.
 
-![Sizes from each dataset's paper or page, linked in the tables below](images/10-dataset-sizes.png)
+![Sizes from each dataset's paper or page, linked in the tables below](images/11-dataset-sizes.png)
 
-![How hard each dataset is to get, checked November 2026](images/11-dataset-access.png)
+![How hard each dataset is to get, checked November 2026](images/12-dataset-access.png)
 
 How easy a dataset is to get matters as much as its size. Open sets download right away. Most others need a sign-up and a promise to use the data only for research. The PhysioNet "credentialed" sets, including MIMIC-CXR, need a CITI ethics course and an approval that takes several business days, and students must name a supervisor. Rules checked on: [MIMIC-CXR](https://physionet.org/content/mimic-cxr/2.1.0), [VinDr-CXR](https://www.physionet.org/content/vindr-cxr/), [PhysioNet access tiers](https://casrai.org/guides/physionet-credentialed-access-restricted-data), [PadChest agreement](https://bimcv.cipf.es/?p=4923), [fastMRI](https://fastmri.med.nyu.edu/), [CT-RATE](https://huggingface.co/datasets/ibrahimhamamci/CT-RATE).
 
@@ -264,7 +272,7 @@ These are mostly used as *tests* (benchmarks), not for main training.
 
 Medical AI works with real patients' scans, so four rules apply to every project, including a first one.
 
-![Ethics and safety rules for medical AI projects](images/12-ethics-and-safety.png)
+![Ethics and safety rules for medical AI projects](images/13-ethics-and-safety.png)
 
 One more habit: if a result looks too good to be true, check for a data leak before celebrating. The most common one is images from the same patient in both the training set and the test set.
 
@@ -272,7 +280,7 @@ One more habit: if a result looks too good to be true, check for a data leak bef
 
 A good student research question is small, specific, and testable with data you can actually get. Run through three questions with your first project's results in hand.
 
-![A spot-the-gap checklist for finding a research question](images/13-find-a-research-question.png)
+![A spot-the-gap checklist for finding a research question](images/14-find-a-research-question.png)
 
 Before you start, check whether someone has already answered your question (search Google Scholar or arXiv), and talk it over with a teacher or mentor. A question that's already answered isn't wasted: repeating someone's result on different data is real research too.
 
@@ -289,7 +297,7 @@ This is steps 4 and 5 of the ladder. Come back to it after you've tried an exist
 | Reinforcement learning (RL) | The model is rewarded for correct answers and its own reasoning | Can work with a few hundred questions | One to several GPUs | Getting the model to show its reasoning and handle new cases better |
 | Training from scratch | Everything, starting empty | Millions of examples | Big clusters of GPUs | Big labs building new base models; almost never a student project |
 
-![Which parts of the model learn in each training option](images/14-what-gets-trained.png)
+![Which parts of the model learn in each training option](images/15-what-gets-trained.png)
 
 Blue parts change during training; dashed parts stay frozen. LoRA's small add-ons are the "sticky notes" described below.
 
@@ -298,17 +306,17 @@ Blue parts change during training; dashed parts stay frozen. LoRA's small add-on
 - **LoRA** (low-rank adaptation) adds small, trainable "sticky notes" to a frozen model instead of rewriting the whole book. **QLoRA** also shrinks the main model to 4-bit numbers so it fits in less memory. With QLoRA, the pretrained model is quantized to 4-bit and frozen, and only the attached adapter layers are trained ([Google guide](https://ai.google.dev/gemma/docs/core/huggingface_text_finetune_qlora)). This is how most groups adapt MedGemma 4B.
 - **Reinforcement learning (RL)** works like practice with a scorekeeper: the model tries an answer, gets points if it's right, and gradually learns better reasoning. A popular method called GRPO scores answers with simple rules instead of a separate judging model ([MedVLM-R1](https://arxiv.org/abs/2502.19634)). MedVLM-R1 used only 600 visual question-answer samples on a 2-billion-parameter model and raised accuracy from 55.11% to 78.22% across MRI, CT, and X-ray questions. Researchers are still debating how much RL truly adds beyond regular fine-tuning ([2026 study](https://arxiv.org/abs/2603.01301)).
 
-![The reinforcement learning loop](images/15-reinforcement-learning-loop.png)
+![The reinforcement learning loop](images/16-reinforcement-learning-loop.png)
 
 ### Free tools for doing it
 
-![The free tools for each step of a fine-tuning run](images/16-free-tools.png)
+![The free tools for each step of a fine-tuning run](images/17-free-tools.png)
 
 Worked example to follow: [fine-tuning MedGemma 4B on a brain MRI dataset](https://www.datacamp.com/tutorial/fine-tuning-medgemma) with LoRA. Google's official MedGemma notebooks use the same steps.
 
 **Rule of thumb:** fine-tuning on a small dataset can make a model great on *your* hospital's images and worse on everyone else's. Always keep some test images the model never trained on, ideally from a different source.
 
-![How to split your images before training](images/17-train-test-split.png)
+![How to split your images before training](images/18-train-test-split.png)
 
 ## 11. Key words to know
 
