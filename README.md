@@ -3,9 +3,9 @@
 A starter kit for students who want to do research with large vision-language models (LVLMs) on medical scans.
 
 - **The guide** (models, datasets, agents, and how to approach a project): [`docs/guide.md`](docs/guide.md)
-- **Your first project** (hands-on, about one week): see [`first-project/`](first-project/README.md)
+- **MedGemma practice, your first project** (hands-on, about one week): see [`medgemma-practice/`](medgemma-practice/README.md)
 
-**Try it now:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/first-project/medgemma_practice.ipynb)
+**Try it now:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/medgemma-practice/medgemma_practice.ipynb)
 
 ## What's in this repo
 
@@ -16,7 +16,7 @@ A starter kit for students who want to do research with large vision-language mo
 ├── docs/
 │   ├── guide.md           ← the full guide
 │   └── images/            ← its diagrams and charts
-└── first-project/
+└── medgemma-practice/
     ├── README.md          ← step-by-step instructions
     ├── medgemma_practice.ipynb   ← MedGemma practice notebook (Colab): start here
     ├── 01_pick_images.py  ← build a small test set from ChestX-ray14

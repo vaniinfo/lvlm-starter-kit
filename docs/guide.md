@@ -96,9 +96,9 @@ Steps 4 and 5 involve training, an advanced topic. They are covered in the "Adva
 
 ### Your first project
 
-This is step 1 of the ladder, done for real. You test MedGemma on one simple question, "Is there fluid around the lungs in this X-ray?", using 20 chest X-rays you pick yourself. Everything is in our project repo, in the [`first-project`](../first-project/) folder: a ready-to-run MedGemma practice notebook for Colab ([`medgemma_practice.ipynb`](../first-project/medgemma_practice.ipynb)), plus one script per step if you'd rather run it on your own computer.
+This is step 1 of the ladder, done for real. You test MedGemma on one simple question, "Is there fluid around the lungs in this X-ray?", using 20 chest X-rays you pick yourself. Everything is in our project repo, in the [`medgemma-practice`](../medgemma-practice/) folder: a ready-to-run MedGemma practice notebook for Colab ([`medgemma_practice.ipynb`](../medgemma-practice/medgemma_practice.ipynb)), plus one script per step if you'd rather run it on your own computer.
 
-![The first project in our repo: folder first-project/](images/06-first-project.png)
+![The first project in our repo: folder medgemma-practice/](images/06-first-project.png)
 
 The score shows how often it **caught** a real case, **missed** one, or raised a **false alarm**. Then change one thing (the question's wording, the finding, or the model), rerun, and compare. Twenty images is a demo, not a result: one image changes the score by 5 percentage points.
 
@@ -118,7 +118,7 @@ You can't say a model is good without a score, and in medicine the *kind* of mis
 
 - **Accuracy can fool you.** If only 5 in 100 X-rays show disease, a model that always says "healthy" scores 95% while catching nothing. Always look at the next two numbers too.
 - **Sensitivity vs. specificity is a trade-off.** Make the model say "yes" more easily and it misses fewer real cases (higher sensitivity) but raises more false alarms (lower specificity). For a screening tool, missing a sick patient is usually the worse mistake.
-- **AUC compares models fairly.** It needs a confidence score for each image, not just yes or no, and it doesn't depend on picking one cutoff. My X-ray project used AUC to compare MedGemma, CheXagent and MAIRA-2 across several datasets. The first-project notebook gets plain yes/no answers, so it reports accuracy, sensitivity and specificity instead.
+- **AUC compares models fairly.** It needs a confidence score for each image, not just yes or no, and it doesn't depend on picking one cutoff. My X-ray project used AUC to compare MedGemma, CheXagent and MAIRA-2 across several datasets. The MedGemma practice notebook gets plain yes/no answers, so it reports accuracy, sensitivity and specificity instead.
 
 ## 5. Available models
 
