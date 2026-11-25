@@ -15,6 +15,7 @@ A starter kit for students who want to do research with large vision-language mo
 │   └── README.md          ← link to the full guide, with all its diagrams
 └── first-project/
     ├── README.md          ← step-by-step instructions
+    ├── first_project_colab.ipynb ← ready-to-run notebook: start here
     ├── 01_pick_images.py  ← build a small test set from ChestX-ray14
     ├── 02_ask_medgemma.py ← ask MedGemma a yes/no question about each image
     └── 03_score.py        ← compare its answers to the real labels

@@ -10,7 +10,19 @@
     sign-up)          10 no)                  question each)        cases, false alarms)
 ```
 
-## What you need
+## Easiest way: the Colab notebook (recommended)
+
+Everything in one place, with no downloads to your own computer:
+
+1. Go to [colab.research.google.com](https://colab.research.google.com) → **File → Upload notebook** → choose [`first_project_colab.ipynb`](first_project_colab.ipynb) from this folder.
+2. Follow the "Before you start" box at the top (turn on the free GPU, get MedGemma access).
+3. Run each cell with **Shift + Enter**.
+
+The notebook downloads the X-rays itself, shows you the 20 test images, asks MedGemma about each one, scores it, and shows you the images it got wrong. The scripts below do the same steps if you'd rather run things on your own machine.
+
+## Running it with the scripts instead
+
+### What you need
 
 - A Google account for [Google Colab](https://colab.research.google.com) (free GPU) or a [Kaggle](https://www.kaggle.com) account.
 - A free [Hugging Face](https://huggingface.co) account. MedGemma is a "gated" model: open its page (`google/medgemma-4b-it`), accept the terms, then create an access token under Settings → Access Tokens.
