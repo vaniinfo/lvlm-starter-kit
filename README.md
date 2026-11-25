@@ -2,7 +2,7 @@
 
 A starter kit for students who want to do research with large vision-language models (LVLMs) on medical scans.
 
-- **The guide** (models, datasets, agents, and how to approach a project): see [`docs/`](docs/README.md)
+- **The guide** (models, datasets, agents, and how to approach a project): [`docs/guide.md`](docs/guide.md)
 - **Your first project** (hands-on, about one week): see [`first-project/`](first-project/README.md)
 
 ## What's in this repo
@@ -12,7 +12,8 @@ A starter kit for students who want to do research with large vision-language mo
 ├── README.md              ← you are here
 ├── requirements.txt       ← Python packages for the first project
 ├── docs/
-│   └── README.md          ← link to the full guide, with all its diagrams
+│   ├── guide.md           ← the full guide
+│   └── images/            ← its diagrams and charts
 └── first-project/
     ├── README.md          ← step-by-step instructions
     ├── first_project_colab.ipynb ← ready-to-run notebook: start here

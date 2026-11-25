@@ -9,6 +9,9 @@ results/
 *.nii.gz
 *.tar.gz
 
+# ...except the guide's own diagrams (drawings, not patient images)
+!docs/images/*.png
+
 # Secrets
 .env
 *.token
