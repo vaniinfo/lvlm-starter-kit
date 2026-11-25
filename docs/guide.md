@@ -6,15 +6,17 @@ A starter guide to large vision-language models (LVLMs) for medical scans: the m
 
 1. [Three kinds of medical AI models](#1-three-kinds-of-medical-ai-models) — classifiers, segmentation models and VLMs, then how a VLM works
 2. [Our LVLM projects fall into three categories of medical imaging](#2-our-lvlm-projects-fall-into-three-categories-of-medical-imaging) — X-ray, CT, MRI, and the 3D CT gap
-3. [How to approach a project: try first, train later](#3-how-to-approach-a-project-try-first-train-later) — where new students should start, and my own path
-4. [Available models](#4-available-models) — all-rounders and specialists for each scan type
-5. [Agentic pipelines](#5-agentic-pipelines-ai-that-manages-a-team) — AI managers that use other models as tools
-6. [Public datasets](#6-public-datasets-what-the-models-learn-from) — what's out there, how big, and how hard to get
-7. [Advanced: training and fine-tuning options](#7-advanced-training-and-fine-tuning-options) — for later, once the basics work
-8. [Five big lessons](#8-five-big-lessons)
-9. [Key words to know](#9-key-words-to-know)
-10. [Questions to discuss](#10-questions-to-discuss)
-11. [Sources](#11-sources)
+3. [How to approach a project: try first, train later](#3-how-to-approach-a-project-try-first-train-later) — where new students should start, my own path, and your first project
+4. [How results are scored](#4-how-results-are-scored) — caught it, missed it, false alarm, and AUC
+5. [Available models](#5-available-models) — all-rounders and specialists for each scan type
+6. [Agentic pipelines](#6-agentic-pipelines-ai-that-manages-a-team) — AI managers that use other models as tools
+7. [Public datasets](#7-public-datasets-what-the-models-learn-from) — what's out there, how big, and how hard to get
+8. [Ethics and safety](#8-ethics-and-safety) — privacy, bias, hallucination, and why AI assists doctors
+9. [How to find a research question](#9-how-to-find-a-research-question) — a spot-the-gap checklist
+10. [Advanced: training and fine-tuning options](#10-advanced-training-and-fine-tuning-options) — for later, once the basics work
+11. [Key words to know](#11-key-words-to-know)
+12. [Questions to discuss](#12-questions-to-discuss)
+13. [Sources](#13-sources)
 
 ## 1. Three kinds of medical AI models
 
@@ -93,15 +95,25 @@ Steps 4 and 5 involve training, an advanced topic. They are covered in the "Adva
 
 ### Your first project
 
-This is step 1 of the ladder, done for real. You test MedGemma on one simple question, "Is there fluid around the lungs in this X-ray?", using 20 chest X-rays you pick yourself. Everything is in this repo's [`first-project`](../first-project/) folder: a ready-to-run Colab notebook ([`first_project_colab.ipynb`](../first-project/first_project_colab.ipynb)), plus one script per step if you'd rather run it on your own computer.
+This is step 1 of the ladder, done for real. You test MedGemma on one simple question, "Is there fluid around the lungs in this X-ray?", using 20 chest X-rays you pick yourself. Everything is in our project repo, in the [`first-project`](../first-project/) folder: a ready-to-run Colab notebook ([`first_project_colab.ipynb`](../first-project/first_project_colab.ipynb)), plus one script per step if you'd rather run it on your own computer.
 
 ![The first project in our repo: folder first-project/](images/06-first-project.png)
 
 The score shows how often it **caught** a real case, **missed** one, or raised a **false alarm**. Then change one thing (the question's wording, the finding, or the model), rerun, and compare. Twenty images is a demo, not a result: one image changes the score by 5 percentage points.
 
-## 4. Available models
+## 4. How results are scored
 
-![Map of available medical VLMs and agents by scan type](images/07-available-models.png)
+You can't say a model is good without a score, and in medicine the *kind* of mistake matters. Every yes/no answer lands in one of four boxes.
+
+![How a yes/no medical AI is scored](images/07-how-results-are-scored.png)
+
+- **Accuracy can fool you.** If only 5 in 100 X-rays show disease, a model that always says "healthy" scores 95% while catching nothing. Always look at the next two numbers too.
+- **Sensitivity vs. specificity is a trade-off.** Make the model say "yes" more easily and it misses fewer real cases (higher sensitivity) but raises more false alarms (lower specificity). For a screening tool, missing a sick patient is usually the worse mistake.
+- **AUC compares models fairly.** It needs a confidence score for each image, not just yes or no, and it doesn't depend on picking one cutoff. My X-ray project used AUC to compare MedGemma, CheXagent and MAIRA-2 across several datasets. The first-project notebook gets plain yes/no answers, so it reports accuracy, sensitivity and specificity instead.
+
+## 5. Available models
+
+![Map of available medical VLMs and agents by scan type](images/08-available-models.png)
 
 Models come in three layers. All-rounders handle many scan types, specialists are built for one, and agents sit on top and use both as tools. The lists below give more detail on each group. Agents have their own section further down.
 
@@ -164,13 +176,13 @@ MRI is the least developed area. Each MRI scan can include several different "se
 
 MedGemma 1.5 and RadFM can also take MRI, but they are generalists, not MRI experts. Because so few MRI models exist, this is a wide-open area for new research.
 
-## 5. Agentic pipelines: AI that manages a team
+## 6. Agentic pipelines: AI that manages a team
 
 An agent is not one model. It is a system where a language model acts as the manager: it reads the question, decides which specialist tools to use, runs them, checks the results, and writes the final answer. Many of the models above (CheXagent, MAIRA-2, LLaVA-Med) show up *inside* agents as tools.
 
 **Analogy:** a single VLM is one doctor glancing at a scan. An agent is the attending physician running a care team: order the lab test, ask the radiologist, call a specialist, compare their answers, then decide.
 
-![How a chest X-ray agent like MedRAX works](images/08-how-an-agent-works.png)
+![How a chest X-ray agent like MedRAX works](images/09-how-an-agent-works.png)
 
 The manager hands the scan to each specialist tool, gathers what they found, and writes one answer. Because every step is recorded, a doctor can see exactly how it got there.
 
@@ -199,13 +211,13 @@ The manager hands the scan to each specialist tool, gathers what they found, and
 - **CT-FlowBench:** tests whether a CT agent uses its tools correctly, step by step.
 - **RadABench:** tests how well different AIs work as the manager. Its warning: many still fumble when a task needs lots of tools in the right order.
 
-## 6. Public datasets: what the models learn from
+## 7. Public datasets: what the models learn from
 
 An AI is only as good as the examples it learns from, and medical images are hard to share because they belong to real patients. The datasets below have been "de-identified" (names and personal details removed) and released for research. The sizes explain a lot: chest X-ray has hundreds of thousands of examples, CT has tens of thousands, and MRI has far fewer. That is the same order as how mature each group of models is.
 
-![Sizes from each dataset's paper or page, linked in the tables below](images/09-dataset-sizes.png)
+![Sizes from each dataset's paper or page, linked in the tables below](images/10-dataset-sizes.png)
 
-![How hard each dataset is to get, checked November 2026](images/10-dataset-access.png)
+![How hard each dataset is to get, checked November 2026](images/11-dataset-access.png)
 
 How easy a dataset is to get matters as much as its size. Open sets download right away. Most others need a sign-up and a promise to use the data only for research. The PhysioNet "credentialed" sets, including MIMIC-CXR, need a CITI ethics course and an approval that takes several business days, and students must name a supervisor. Rules checked on: [MIMIC-CXR](https://physionet.org/content/mimic-cxr/2.1.0), [VinDr-CXR](https://www.physionet.org/content/vindr-cxr/), [PhysioNet access tiers](https://casrai.org/guides/physionet-credentialed-access-restricted-data), [PadChest agreement](https://bimcv.cipf.es/?p=4923), [fastMRI](https://fastmri.med.nyu.edu/), [CT-RATE](https://huggingface.co/datasets/ibrahimhamamci/CT-RATE).
 
@@ -248,7 +260,23 @@ These are mostly used as *tests* (benchmarks), not for main training.
 
 **Good to know:** "public" does not always mean one-click download. MIMIC-CXR, CT-RATE, and others ask you to register, agree to rules about patient privacy, and sometimes complete a short research-ethics course first.
 
-## 7. Advanced: training and fine-tuning options
+## 8. Ethics and safety
+
+Medical AI works with real patients' scans, so four rules apply to every project, including a first one.
+
+![Ethics and safety rules for medical AI projects](images/12-ethics-and-safety.png)
+
+One more habit: if a result looks too good to be true, check for a data leak before celebrating. The most common one is images from the same patient in both the training set and the test set.
+
+## 9. How to find a research question
+
+A good student research question is small, specific, and testable with data you can actually get. Run through three questions with your first project's results in hand.
+
+![A spot-the-gap checklist for finding a research question](images/13-find-a-research-question.png)
+
+Before you start, check whether someone has already answered your question (search Google Scholar or arXiv), and talk it over with a teacher or mentor. A question that's already answered isn't wasted: repeating someone's result on different data is real research too.
+
+## 10. Advanced: training and fine-tuning options
 
 This is steps 4 and 5 of the ladder. Come back to it after you've tried an existing model, better prompts, and tools on your own test set. The options run from lightest to heaviest.
 
@@ -261,7 +289,7 @@ This is steps 4 and 5 of the ladder. Come back to it after you've tried an exist
 | Reinforcement learning (RL) | The model is rewarded for correct answers and its own reasoning | Can work with a few hundred questions | One to several GPUs | Getting the model to show its reasoning and handle new cases better |
 | Training from scratch | Everything, starting empty | Millions of examples | Big clusters of GPUs | Big labs building new base models; almost never a student project |
 
-![Which parts of the model learn in each training option](images/11-what-gets-trained.png)
+![Which parts of the model learn in each training option](images/14-what-gets-trained.png)
 
 Blue parts change during training; dashed parts stay frozen. LoRA's small add-ons are the "sticky notes" described below.
 
@@ -270,27 +298,19 @@ Blue parts change during training; dashed parts stay frozen. LoRA's small add-on
 - **LoRA** (low-rank adaptation) adds small, trainable "sticky notes" to a frozen model instead of rewriting the whole book. **QLoRA** also shrinks the main model to 4-bit numbers so it fits in less memory. With QLoRA, the pretrained model is quantized to 4-bit and frozen, and only the attached adapter layers are trained ([Google guide](https://ai.google.dev/gemma/docs/core/huggingface_text_finetune_qlora)). This is how most groups adapt MedGemma 4B.
 - **Reinforcement learning (RL)** works like practice with a scorekeeper: the model tries an answer, gets points if it's right, and gradually learns better reasoning. A popular method called GRPO scores answers with simple rules instead of a separate judging model ([MedVLM-R1](https://arxiv.org/abs/2502.19634)). MedVLM-R1 used only 600 visual question-answer samples on a 2-billion-parameter model and raised accuracy from 55.11% to 78.22% across MRI, CT, and X-ray questions. Researchers are still debating how much RL truly adds beyond regular fine-tuning ([2026 study](https://arxiv.org/abs/2603.01301)).
 
-![The reinforcement learning loop](images/12-reinforcement-learning-loop.png)
+![The reinforcement learning loop](images/15-reinforcement-learning-loop.png)
 
 ### Free tools for doing it
 
-![The free tools for each step of a fine-tuning run](images/13-free-tools.png)
+![The free tools for each step of a fine-tuning run](images/16-free-tools.png)
 
 Worked example to follow: [fine-tuning MedGemma 4B on a brain MRI dataset](https://www.datacamp.com/tutorial/fine-tuning-medgemma) with LoRA. Google's official MedGemma notebooks use the same steps.
 
 **Rule of thumb:** fine-tuning on a small dataset can make a model great on *your* hospital's images and worse on everyone else's. Always keep some test images the model never trained on, ideally from a different source.
 
-![How to split your images before training](images/14-train-test-split.png)
+![How to split your images before training](images/17-train-test-split.png)
 
-## 8. Five big lessons
-
-1. **A "medical" label is not magic.** Extra medical training does not always help. One 2026 study found LLaVA-Med did much worse than plain LLaVA on the same task, while MedGemma did beat its base model ([source](https://arxiv.org/abs/2604.09841)). Always test against the general model too.
-2. **Easy tests can fool you.** On brain tumor detection, even models with no medical training scored well. On skin cancer and tissue slides, most models were close to a coin flip.
-3. **Some models chat, some models match.** Chat models (like CheXagent or CT-CHAT) write answers. Matching models (like CT-CLIP or BiomedCLIP) score how well an image fits a sentence, which makes them great "eyes" inside bigger systems.
-4. **The field is moving from one big model to a team.** Agent systems that call several specialist tools have beaten single models on chest X-ray tests.
-5. **Lots is still unsolved.** True 3D understanding, MRI, heart videos, and explaining *why* an answer is right are all open problems. Today, these tools assist doctors; they do not replace them.
-
-## 9. Key words to know
+## 11. Key words to know
 
 | Term | Plain meaning |
 | --- | --- |
@@ -305,7 +325,7 @@ Worked example to follow: [fine-tuning MedGemma 4B on a brain MRI dataset](https
 | Tool | Any program an agent can call, like a measuring tool or another AI model. |
 | 3D volume | A scan made of many stacked slices, like a CT or MRI. |
 
-## 10. Questions to discuss
+## 12. Questions to discuss
 
 1. If an AI and a doctor disagree about a scan, who should decide, and why?
 2. Why might a general AI sometimes beat a medical-specialist AI?
@@ -313,7 +333,7 @@ Worked example to follow: [fine-tuning MedGemma 4B on a brain MRI dataset](https
 4. Why is MRI harder for AI than a chest X-ray? What would help close the gap?
 5. What could go wrong if an AI is trained mostly on scans from one country or one hospital?
 
-## 11. Sources
+## 13. Sources
 
 - [MedGemma 1.5 technical report](https://arxiv.org/abs/2604.05081)
 - [Fragility in medically fine-tuned VLMs (2026)](https://arxiv.org/abs/2604.09841)
