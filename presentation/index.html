@@ -188,7 +188,7 @@
     <aside class="notes">
       Two real examples where tiny wording changes flipped the result.
       First, chest X-ray with CheXagent. The fluid is on the patient's left. When the prompt said "locate RIGHT pleural effusion," the model boxed the right side anyway: it followed the words, not the image. When we hid the side and just said "locate pleural effusion," it boxed the correct side. Lesson: when you use a model to check a claim, don't put the claim in the prompt. Ask neutrally, then compare.
-      Second, lung CT with NV-Reason-CT. Same case, same prompt, thinking on. Lowercase "atelectasis" got Yes; capital "Atelectasis" got No, with or without the cached CT context. Models read text as tokens, so a capital letter can look like a different word. Lesson: fix your exact prompt text and test small variants on purpose.
+      Second, lung CT with NV-Reason-CT. Same case, same prompt, and the same result with thinking on or off. Lowercase "atelectasis" got Yes; capital "Atelectasis" got No, with or without the cached CT context. Models read text as tokens, so a capital letter can look like a different word. Lesson: fix your exact prompt text and test small variants on purpose.
       Each is a single case, a warning sign to test for, not a measured error rate.
     </aside>
   </section>
