@@ -2,6 +2,14 @@
 
 A starter guide to large vision-language models (LVLMs) for medical scans: the models, the data, and how to grow from a first experiment to your own research question · November 24, 2026 · Vani
 
+## Before you start
+
+This guide builds on material the lab has already published. Do the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) first: it covers what a VLM is, how VLMs work, a pipeline example and an assessment. This guide picks up from there and applies it to medical scans.
+
+![Prerequisite: the Duong Lab onboarding VLM path, then this starter kit](images/00-prerequisite.png)
+
+Good to know: the onboarding's hands-on tutorial currently needs a paid Gemini account, so it's optional there. The MedGemma practice notebook in this guide uses a free, open model instead.
+
 ## Agenda
 
 1. [Three kinds of medical AI models](#1-three-kinds-of-medical-ai-models) — classifiers, segmentation models and VLMs, then how a VLM works
@@ -28,6 +36,8 @@ Classifiers and segmentation models are older, narrower AI tools, each trained f
 This guide focuses on the third kind, vision-language models, and on how they team up with the other two.
 
 ### Zooming in: what is a vision-language model?
+
+*Quick recap: if you've done the onboarding VLM path, skim this part.*
 
 A vision-language model (VLM, sometimes called an LVLM, a "large" VLM) is an AI that can look at a picture and talk about it. You show it an image, ask a question in plain English, and it answers in plain English.
 

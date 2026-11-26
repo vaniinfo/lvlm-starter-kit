@@ -2,6 +2,8 @@
 
 A starter kit for students who want to do research with large vision-language models (LVLMs) on medical scans.
 
+> **Prerequisite:** first complete the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) (modules 1–6: what a VLM is, how it works, a pipeline example, and an assessment). This kit builds on top of it and applies those basics to medical imaging.
+
 - **The guide** (models, datasets, agents, and how to approach a project): [`docs/guide.md`](docs/guide.md)
 - **The presentation** (interactive slides with speaker notes): [`presentation/`](presentation/README.md), online at [vaniinfo.github.io/lvlm-starter-kit/presentation](https://vaniinfo.github.io/lvlm-starter-kit/presentation/)
 - **MedGemma practice, your first project** (hands-on, about one week): see [`medgemma-practice/`](medgemma-practice/README.md)
