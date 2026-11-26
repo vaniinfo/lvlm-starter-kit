@@ -182,6 +182,16 @@
       Two rules keep it honest. Use enough images, so a "win" isn't luck. And never pick the winner and grade it on the same images: choose on a tuning set, then confirm on fresh images.
     </aside>
   </section>
+  <section>
+    <h2>Two real prompt traps from our projects</h2>
+    <img class="diagram tall" src="../docs/images/21-prompt-traps.png" alt="Chest X-ray: naming the side made CheXagent box the wrong side; lung CT: capital A in Atelectasis flipped NV-Reason-CT's answer">
+    <aside class="notes">
+      Two real examples where tiny wording changes flipped the result.
+      First, chest X-ray with CheXagent. The fluid is on the patient's left. When the prompt said "locate RIGHT pleural effusion," the model boxed the right side anyway: it followed the words, not the image. When we hid the side and just said "locate pleural effusion," it boxed the correct side. Lesson: when you use a model to check a claim, don't put the claim in the prompt. Ask neutrally, then compare.
+      Second, lung CT with NV-Reason-CT. Same case, same prompt, thinking on. Lowercase "atelectasis" got Yes; capital "Atelectasis" got No, with or without the cached CT context. Models read text as tokens, so a capital letter can look like a different word. Lesson: fix your exact prompt text and test small variants on purpose.
+      Each is a single case, a warning sign to test for, not a measured error rate.
+    </aside>
+  </section>
 </section>
 
 <!-- ============ 4. Scoring ============ -->

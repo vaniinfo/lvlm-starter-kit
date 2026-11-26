@@ -117,6 +117,12 @@ The wording of the question alone can change the score. The notebook's optional 
 
 Two rules keep the comparison honest. Use enough images (25 + 25 per set, not 20 in total), so a "win" isn't just luck. And never pick the winner and grade it on the same images: choose on a tuning set, then confirm on fresh images it has never seen.
 
+**Two real examples from our projects.** Small wording changes flipped real results in both of my pipelines.
+
+![Two real prompt traps from our chest X-ray and lung CT projects](images/21-prompt-traps.png)
+
+Two lessons. First, when you use a model to check a claim, don't put the claim in the prompt: naming "right" nudged CheXagent toward the right side even though the fluid was on the left. Ask neutrally and compare the answer to the claim afterward. Second, fix your exact prompt text and test small variants on purpose. Models read text as tokens, so "atelectasis" and "Atelectasis" can look different to them. Each example is a single case, so treat it as a warning sign to test for, not a measured error rate.
+
 ## 4. How results are scored
 
 You can't say a model is good without a score, and in medicine the *kind* of mistake matters. Every yes/no answer lands in one of four boxes.
