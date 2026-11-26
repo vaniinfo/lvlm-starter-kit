@@ -100,7 +100,7 @@
     <img class="diagram" src="../docs/images/02-vlm-vs-lvlm.png" alt="Same chest X-ray: a matching VLM scores captions you give it; an LVLM like MedGemma answers your question in words">
     <aside class="notes">
       A VLM is any AI that connects pictures and words. Same X-ray, two kinds of model.
-      Top: a matching model like CheXzero or BiomedCLIP. You hand it captions and it scores how well each one fits. It picks the best match, but it can't answer a question you didn't write a caption for.
+      Top: a matching model like CheXzero or BiomedCLIP. You give it two things, the X-ray and a list of captions you wrote, and it gives back a match score for each caption. It never writes new words. It picks the best match, but it can't answer a question you didn't write a caption for.
       Bottom: a large VLM, an LVLM, like MedGemma or MAIRA-2, which is built to write chest X-ray reports. It's built on a chatbot-style language model, so you ask anything and it answers in words. Much more useful, but it can also sound confident when it's wrong. That's the kind this talk is about.
       The numbers and the answer here are made-up examples. How these models work inside is in the lab's onboarding VLM path.
     </aside>
@@ -189,7 +189,7 @@
     <aside class="notes">
       Two real examples where tiny wording changes flipped the result.
       First, chest X-ray with CheXagent. The fluid is on the patient's left. When the prompt said "locate RIGHT pleural effusion," the model boxed the right side anyway: it followed the words, not the image. The model becomes biased when the prompt hands it the answer: give it a detail like the side, and it tends to go along with what we gave it instead of checking the image. That's called anchoring. When we hid the side and just said "locate pleural effusion," it boxed the correct side. Lesson: when you use a model to check a claim, don't put the claim in the prompt. Ask neutrally, then compare.
-      Second, lung CT with NV-Reason-CT. Same case, same prompt, and the same result with thinking on or off. Lowercase "atelectasis" got Yes; capital "Atelectasis" got No, with or without the cached CT context. Models read text as tokens, so a capital letter can look like a different word. Lesson: fix your exact prompt text and test small variants on purpose.
+      Second, lung CT with NV-Reason-CT. Same case, same prompt, and the same result with thinking on or off. Lowercase "atelectasis" got Yes; capital "Atelectasis" got No, both with full inference, where the model reads the whole CT fresh each time, and with the cached CT context, where it reads the CT once and reuses that saved work. Models read text as tokens, so a capital letter can look like a different word. Lesson: fix your exact prompt text and test small variants on purpose.
       Each is a single case, a warning sign to test for, not a measured error rate. The big message: prompt testing is a critical step, and it takes many rounds to reach the accuracy you need. These are just two traps; there are more.
     </aside>
   </section>

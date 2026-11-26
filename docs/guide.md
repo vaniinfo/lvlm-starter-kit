@@ -117,7 +117,7 @@ The wording of the question alone can change the score. The notebook's optional 
 
 Two rules keep the comparison honest. Use enough images (25 + 25 per set, not 20 in total), so a "win" isn't just luck. And never pick the winner and grade it on the same images: choose on a tuning set, then confirm on fresh images it has never seen.
 
-**Two real examples from our projects.** Small wording changes flipped real results in both of my pipelines.
+**Two real examples from our projects.** Small wording changes flipped real results in both of my pipelines. In example 2, the model was run two ways. "Full inference" means it reads the whole CT scan fresh along with each question. "Cached CT context" means it reads the scan once, saves that work, and reuses it for the next question, which is faster. The capital letter flipped the answer both ways.
 
 ![Prompt testing is a critical step: expect many rounds to reach the accuracy you need. These are just two traps; there are more, so test your own prompts on purpose.](images/22-prompt-testing-flash.png)
 
