@@ -8,7 +8,11 @@ Written for students in the [Duong Lab](https://sites.einsteinmed.edu/duong-lab)
 
 This guide builds on material the lab has already published. Do the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) first: it covers what a VLM is, how VLMs work, a pipeline example and an assessment. This guide picks up from there. It follows my own path from chest X-ray to CT to MRI, and shares what I learned on the way, so you can move faster.
 
-![Three steps: the lab's onboarding, this starter kit, then your own project](images/00-prerequisite.png)
+<div style="position:relative; max-width:760px;">
+<img src="images/00-prerequisite.png" alt="Three steps: the lab's onboarding, this starter kit, then your own project" style="width:100%; display:block;">
+<a href="https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm" title="Open the Duong Lab onboarding VLM path" style="position:absolute; left:2.1%; top:17.3%; width:29.5%; height:74.7%;"></a>
+<a href="https://github.com/vaniinfo/lvlm-project-template" title="Open the LVLM project template" style="position:absolute; left:68.4%; top:17.3%; width:29.5%; height:74.7%;"></a>
+</div>
 
 When you're ready for your own project, start from the [LVLM project template](https://github.com/vaniinfo/lvlm-project-template): click **Use this template** on GitHub. It comes with a Colab notebook to explore three starter models, rules for AI coding agents, data and scoring rules, and starter code.
 
