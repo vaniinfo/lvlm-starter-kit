@@ -1,6 +1,6 @@
 # LVLM Research Projects in Medical Imaging: How to Ramp Up
 
-A starter kit for students who want to do research with large vision-language models (LVLMs) on medical scans.
+A starter kit for students in the [Duong Lab](https://sites.einsteinmed.edu/duong-lab) (Dr. Tim Q. Duong, Department of Radiology, Albert Einstein College of Medicine) who want to do research with large vision-language models (LVLMs) on medical scans. Thanks to Dr. Duong and the lab for the research onboarding it builds on.
 
 > **Prerequisite:** first complete the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) (modules 1–6: what a VLM is, how it works, a pipeline example, and an assessment). This kit builds on top of it and applies those basics to medical imaging.
 

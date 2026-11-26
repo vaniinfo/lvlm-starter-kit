@@ -2,6 +2,8 @@
 
 A starter guide to large vision-language models (LVLMs) for medical scans: the models, the data, and how to grow from a first experiment to your own research question · November 24, 2026 · Vani
 
+Written for students in the [Duong Lab](https://sites.einsteinmed.edu/duong-lab), led by Dr. Tim Q. Duong in the Department of Radiology at Albert Einstein College of Medicine. Thanks to Dr. Duong and the lab for the research onboarding this guide builds on.
+
 ## Before you start
 
 This guide builds on material the lab has already published. Do the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) first: it covers what a VLM is, how VLMs work, a pipeline example and an assessment. This guide picks up from there and applies it to medical scans.
