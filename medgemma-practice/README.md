@@ -31,7 +31,7 @@ The notebook downloads the X-rays itself, shows you the 20 test images, asks Med
 
 ## Step 1: get the data (open download, no sign-up)
 
-We use **ChestX-ray14** from the U.S. National Institutes of Health (NIH): https://nihcc.app.box.com/v/ChestXray-NIHCC
+We use **ChestX-ray14** from the U.S. National Institutes of Health (NIH): [nihcc.app.box.com/v/ChestXray-NIHCC](https://nihcc.app.box.com/v/ChestXray-NIHCC)
 
 Download two things into a `data/` folder next to this file:
 

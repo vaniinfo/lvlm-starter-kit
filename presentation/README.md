@@ -2,7 +2,7 @@
 
 An interactive slide deck version of the [guide](../docs/guide.md), built with [reveal.js](https://revealjs.com) (included in `lib/`, so it works without internet).
 
-**Open it online:** https://vaniinfo.github.io/lvlm-starter-kit/presentation/
+**Open it online:** [vaniinfo.github.io/lvlm-starter-kit/presentation](https://vaniinfo.github.io/lvlm-starter-kit/presentation/)
 (This link works once GitHub Pages is turned on for the repo. See "Hosting" below.)
 
 ## Presenting
@@ -27,7 +27,7 @@ An interactive slide deck version of the [guide](../docs/guide.md), built with [
 ## Printing with notes
 
 Open the deck with `?print-pdf&showNotes=true` at the end of the address, for example
-`https://vaniinfo.github.io/lvlm-starter-kit/presentation/?print-pdf&showNotes=true`,
+[this print link](https://vaniinfo.github.io/lvlm-starter-kit/presentation/?print-pdf&showNotes=true),
 then use the browser's **Print → Save as PDF**. Each slide prints with its notes underneath, which is handy for rehearsing.
 
 ## Hosting (one-time)

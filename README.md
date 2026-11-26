@@ -3,7 +3,7 @@
 A starter kit for students who want to do research with large vision-language models (LVLMs) on medical scans.
 
 - **The guide** (models, datasets, agents, and how to approach a project): [`docs/guide.md`](docs/guide.md)
-- **The presentation** (interactive slides with speaker notes): [`presentation/`](presentation/README.md), online at https://vaniinfo.github.io/lvlm-starter-kit/presentation/
+- **The presentation** (interactive slides with speaker notes): [`presentation/`](presentation/README.md), online at [vaniinfo.github.io/lvlm-starter-kit/presentation](https://vaniinfo.github.io/lvlm-starter-kit/presentation/)
 - **MedGemma practice, your first project** (hands-on, about one week): see [`medgemma-practice/`](medgemma-practice/README.md)
 
 **Try it now:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/medgemma-practice/medgemma_practice.ipynb)
