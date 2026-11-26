@@ -6,7 +6,7 @@ Written for students in the [Duong Lab](https://sites.einsteinmed.edu/duong-lab)
 
 ## Before you start
 
-This guide builds on material the lab has already published. Do the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) first: it covers what a VLM is, how VLMs work, a pipeline example and an assessment. This guide picks up from there and applies it to medical scans.
+This guide builds on material the lab has already published. Do the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) first: it covers what a VLM is, how VLMs work, a pipeline example and an assessment. This guide picks up from there. It follows my own path from chest X-ray to CT to MRI, and shares what I learned on the way, so you can move faster.
 
 ![Three steps: the lab's onboarding, this starter kit, then your own project](images/00-prerequisite.png)
 
