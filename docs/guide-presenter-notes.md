@@ -2,6 +2,7 @@
 
 For presenting **https://vaniinfo.github.io/lvlm-starter-kit/docs/guide.html** while these notes are open on a
 second screen. Each part says what to have **on screen**, what to **say**, and what to **ask**.
+Section numbers match the guide's Agenda.
 
 **Before you start:** open the guide in the browser, zoom to about 125% (Cmd/Ctrl and +), and close other tabs.
 Use the Agenda links to jump between sections instead of long scrolling. Have the
@@ -10,26 +11,24 @@ open in a second tab for the demo.
 
 ## Timing (about 40 minutes + questions)
 
-| Part | Section | Minutes |
-|---|---|---|
-| 1 | Title and Before you start | 3 |
-| 2 | 1. Three kinds of models, VLM vs. LVLM | 4 |
-| 3 | 2. X-ray vs. CT vs. MRI | 4 |
-| 4 | 3. Try first, train later, and my path | 6 |
-| 5 | Your first project + demo | 4 |
-| 6 | Better prompts + two real traps | 5 |
-| 7 | 4. How results are scored | 4 |
-| 8 | 5. Available models + 6. Agents | 4 |
-| 9 | 7. My two projects | 3 |
-| 10 | 8. Datasets, 9. Ethics, 10. Research question | 3 |
-| — | 11. Advanced training: **skip**, mention only | 0–1 |
-| 11 | Wrap-up: next steps and discussion | 2+ |
+| Guide section | Minutes |
+|---|---|
+| Title and Before you start | 3 |
+| 1. Three kinds of medical AI models (VLM vs. LVLM) | 4 |
+| 2. X-ray vs. CT vs. MRI | 4 |
+| 3. How to approach a project: try first, my path, first project, better prompts | 15 |
+| 4. How results are scored | 4 |
+| 5. Available models and 6. Agentic pipelines | 4 |
+| 7. Our projects | 3 |
+| 8. Datasets, 9. Ethics, 10. Research question | 3 |
+| 11. Advanced training: **skip**, mention only | 0–1 |
+| Wrap-up: next steps and discussion | 2+ |
 
-Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for them to read later.
+Short on time? Cut sections 5–6 and 8–10 to one sentence each; the guide is there for them to read later.
 
 ---
 
-## 1. Title and "Before you start" (3 min)
+## Title and "Before you start" (3 min)
 
 **On screen:** the title, then the three-box diagram.
 
@@ -45,7 +44,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 2. Three kinds of medical AI models (4 min)
+## 1. Three kinds of medical AI models (4 min)
 
 **On screen:** the three-kinds diagram, then the "Same X-ray, two kinds of model" diagram.
 
@@ -59,7 +58,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 3. Three categories of scans (4 min)
+## 2. Three categories of scans: X-ray, CT, MRI (4 min)
 
 **On screen:** the X-ray / CT / MRI diagram and table.
 
@@ -72,7 +71,9 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 4. Try first, train later + my path (6 min)
+## 3. How to approach a project (15 min)
+
+### Try first, train later + my path (6 min)
 
 **On screen:** "Pick a starter topic", then the "my own path" diagram, then the ladder.
 
@@ -87,7 +88,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 5. Your first project + demo (4 min)
+### Your first project + demo (4 min)
 
 **On screen:** the first-project diagram. Then switch to the Colab tab.
 
@@ -100,7 +101,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 6. Better prompts + two real traps (5 min)
+### Better prompts + two real traps (5 min)
 
 **On screen:** the four-prompt-styles diagram, the blue banner, then the "Two real prompt traps" diagram.
 
@@ -115,7 +116,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 7. How results are scored (4 min)
+## 4. How results are scored (4 min)
 
 **On screen:** the four-boxes scoring diagram.
 
@@ -129,7 +130,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 8. Available models + agents (4 min)
+## 5. Available models and 6. Agentic pipelines (4 min)
 
 **On screen:** the models map, then the agent diagram.
 
@@ -141,7 +142,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 9. My two projects (3 min)
+## 7. Our projects: two agent pipelines (3 min)
 
 **On screen:** the chest X-ray project diagram, then the lung CT diagram.
 
@@ -152,7 +153,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 10. Datasets, ethics, research question (3 min)
+## 8. Datasets, 9. Ethics and safety, 10. Research question (3 min)
 
 **On screen:** dataset sizes chart, the access chart, then the ethics diagram, then the spot-the-gap checklist.
 
@@ -170,7 +171,7 @@ Short on time? Cut parts 8 and 10 to one sentence each; the guide is there for t
 
 ---
 
-## 12. Wrap-up (2 min + discussion)
+## Wrap-up (2 min + discussion)
 
 **On screen:** scroll back up to "Before you start" (the three boxes).
 
