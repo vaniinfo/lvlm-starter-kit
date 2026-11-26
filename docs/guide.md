@@ -39,7 +39,7 @@ This guide focuses on the third kind, vision-language models, and on how they te
 
 *Quick recap: if you've done the onboarding VLM path, skim this part.*
 
-A vision-language model (VLM, sometimes called an LVLM, a "large" VLM) is an AI that can look at a picture and talk about it. You show it an image, ask a question in plain English, and it answers in plain English.
+A vision-language model (VLM) is an AI that connects pictures and words. The big ones that can actually talk about an image, built on a large language model like the AI behind a chatbot, are called large vision-language models (LVLMs) or multimodal LLMs. You show one an image, ask a question in plain English, and it answers in plain English. MedGemma is an example. This guide is mostly about those.
 
 Think of it as two brains wired together:
 
@@ -351,7 +351,7 @@ Worked example to follow: [fine-tuning MedGemma 4B on a brain MRI dataset](https
 
 | Term | Plain meaning |
 | --- | --- |
-| VLM / LVLM | An AI that looks at images and talks about them. The "L" means large. |
+| VLM / LVLM | VLM: any AI that connects pictures and words. LVLM: the large kind, built on a language model, that can talk about an image (also called a multimodal LLM). |
 | Vision encoder | The "eyes": turns a picture into numbers the AI can work with. |
 | Language model (LLM) | The "talker": reads and writes text. |
 | Fine-tuning | Extra training on a specific topic, like medical images. |
