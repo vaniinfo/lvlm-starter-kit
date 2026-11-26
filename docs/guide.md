@@ -121,7 +121,7 @@ Two rules keep the comparison honest. Use enough images (25 + 25 per set, not 20
 
 ![Two real prompt traps from our chest X-ray and lung CT projects](images/21-prompt-traps.png)
 
-Two lessons. First, when you use a model to check a claim, don't put the claim in the prompt: naming "right" nudged CheXagent toward the right side even though the fluid was on the left. Ask neutrally and compare the answer to the claim afterward. Second, fix your exact prompt text and test small variants on purpose. Models read text as tokens, so "atelectasis" and "Atelectasis" can look different to them. Each example is a single case, so treat it as a warning sign to test for, not a measured error rate.
+Two lessons. First, the model becomes biased when the prompt hands it the answer. Give it a detail like the side (right vs. left) and it tends to go along with what we gave it instead of checking the image: naming "right" made CheXagent box the right side even though the fluid was on the left. This is sometimes called anchoring. So when you use a model to check a claim, don't put the claim in the prompt. Ask neutrally and compare the answer to the claim afterward. Second, fix your exact prompt text and test small variants on purpose. Models read text as tokens, so "atelectasis" and "Atelectasis" can look different to them. Each example is a single case, so treat it as a warning sign to test for, not a measured error rate.
 
 ## 4. How results are scored
 
