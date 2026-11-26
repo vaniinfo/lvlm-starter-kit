@@ -4,7 +4,7 @@ A starter kit for students in the [Duong Lab](https://sites.einsteinmed.edu/duon
 
 > **Prerequisite:** first complete the [Duong Lab research onboarding VLM path](https://sites.google.com/view/research-onboarding-duong-lab/aillmvlm-path/vlm) (modules 1–6: what a VLM is, how it works, a pipeline example, and an assessment). This kit builds on top of it and applies those basics to medical imaging.
 
-- **The guide** (models, datasets, agents, and how to approach a project): [`docs/guide.md`](docs/guide.md)
+- **The guide** (models, datasets, agents, and how to approach a project): [read it online](https://vaniinfo.github.io/lvlm-starter-kit/docs/guide.html), or [`docs/guide.md`](docs/guide.md) on GitHub
 - **The presentation** (interactive slides with speaker notes): [`presentation/`](presentation/README.md), online at [vaniinfo.github.io/lvlm-starter-kit/presentation](https://vaniinfo.github.io/lvlm-starter-kit/presentation/)
 - **MedGemma practice, your first project** (hands-on, about one week): see [`medgemma-practice/`](medgemma-practice/README.md)
 - **Start your own project:** use the [LVLM project template](https://github.com/vaniinfo/lvlm-project-template) (click **Use this template**). It has starter code and the context files an AI coding agent needs.

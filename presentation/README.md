@@ -37,3 +37,5 @@ On GitHub, open the repo → **Settings → Pages** → under "Build and deploym
 ## Editing
 
 Everything is in `index.html`: each slide is a `<section>`, and its speaker notes are in the `<aside class="notes">` inside it. The diagrams come from `../docs/images/`, the same files the guide uses.
+
+The written guide is also online: [https://vaniinfo.github.io/lvlm-starter-kit/docs/guide.html](https://vaniinfo.github.io/lvlm-starter-kit/docs/guide.html).
