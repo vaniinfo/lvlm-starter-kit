@@ -7,6 +7,7 @@ A starter kit for students in the [Duong Lab](https://sites.einsteinmed.edu/duon
 - **The guide** (models, datasets, agents, and how to approach a project): [`docs/guide.md`](docs/guide.md)
 - **The presentation** (interactive slides with speaker notes): [`presentation/`](presentation/README.md), online at [vaniinfo.github.io/lvlm-starter-kit/presentation](https://vaniinfo.github.io/lvlm-starter-kit/presentation/)
 - **MedGemma practice, your first project** (hands-on, about one week): see [`medgemma-practice/`](medgemma-practice/README.md)
+- **Start your own project:** use the [LVLM project template](https://github.com/vaniinfo/lvlm-project-template) (click **Use this template**). It has starter code and the context files an AI coding agent needs.
 
 **Try it now:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/medgemma-practice/medgemma_practice.ipynb)
 
