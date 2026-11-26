@@ -157,9 +157,10 @@
   </section>
   <section>
     <h2>My path: start easy, go deep, then broaden</h2>
-    <img class="diagram tall" src="../docs/images/04-my-path.png" alt="X-ray first, then CT, then MRI; my first project on X-ray, my current project on lung CT">
+    <img class="diagram tall" src="../docs/images/04-my-path.png" alt="X-ray first, then CT, then MRI; my first project on X-ray, my current project on lung CT, early work on cardiac MRI">
     <aside class="notes">
       If you're new, start with chest X-ray: one flat image, runs fast on a free GPU, lots of models and open data. That's what I did. Then I moved to lung CT, which is harder and less explored.
+      And I've made an early start on MRI: a local pipeline using CineMA, a published cardiac MRI model, that outlines the heart's chambers on every frame and measures ejection fraction, how much blood the heart pumps out per beat. On one hospital case the left ventricle looked consistent across three model versions, but the right ventricle isn't usable yet, and with no expert outlines we can't measure accuracy. Agreement between models is not proof they're right.
       Two honest cautions: start with fully open data, because MIMIC-CXR needs an ethics course and approval. And chest X-ray is the most crowded area, so it's great for learning but hard to stand out in. Go deep in one area before spreading out.
     </aside>
   </section>

@@ -80,6 +80,13 @@ Two honest cautions:
 
 The X-ray project taught me the basics, which made the jump to 3D CT much easier.
 
+**Future work, early start: cardiac MRI.** I've begun on MRI with a local pipeline that outlines the heart's chambers on cardiac MRI "movies" (cine MRI) and measures how well the heart pumps. It's early research, and nothing here is clinically validated. Note that [CineMA](https://github.com/mathpluscode/CineMA), the model it uses, is an image model that outlines and measures, not a VLM.
+
+- **What I built:** a setup around CineMA, a published AI model for cardiac MRI, running on a local computer in its own isolated environment, so no patient data leaves the machine. The pipeline reads the scanner files, finds the short-axis series (the stack of cross-section slices), outlines the left ventricle, right ventricle and heart muscle on every frame, calculates volumes and ejection fraction (EF, the share of blood pumped out per beat), and makes side-by-side videos. 24 automated tests check the geometry and volume math on shapes with known answers; all pass.
+- **What I ran:** a public sample to confirm the setup works, then an inventory of 11 hospital cases (about 18,700 image files). A likely short-axis series turned up in each case, though three still need confirming. One case went end to end with three versions of the model.
+- **What it showed:** for the left ventricle, the three versions agreed closely (EF 63–65%, about 112–116 ml when full), and spot-checked outlines looked reasonable. For the right ventricle, they disagreed on the top slice near the valves, which swung EF between 52% and 65%, so it isn't usable yet.
+- **The honest limit:** no accuracy was measured. This case has no expert outlines, and models agreeing with each other is not proof that they're right.
+
 **Step 0: build a small test set first.** Collect 50 to 200 of *your* images with the correct answers, and decide how you'll score them (accuracy, or how many findings the report gets right). Every step below gets judged on this same test, so you can tell whether a change actually helped.
 
 Then climb the ladder below, and only move up a rung if the one below doesn't score well enough on your test:
