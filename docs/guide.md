@@ -10,8 +10,6 @@ This guide builds on material the lab has already published. Do the [Duong Lab r
 
 ![Prerequisite: the Duong Lab onboarding VLM path, then this starter kit](images/00-prerequisite.png)
 
-Good to know: the onboarding's hands-on tutorial currently needs a paid Gemini account, so it's optional there. The MedGemma practice notebook in this guide uses a free, open model instead.
-
 ## Agenda
 
 1. [Three kinds of medical AI models](#1-three-kinds-of-medical-ai-models) — classifiers, segmentation models and VLMs, then VLM vs. LVLM
