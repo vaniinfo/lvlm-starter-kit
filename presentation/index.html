@@ -96,11 +96,13 @@
     </aside>
   </section>
   <section>
-    <h2>How a vision-language model works</h2>
-    <img class="diagram" src="../docs/images/02-how-a-vlm-works.png" alt="Scan goes through the eyes and translator to the talker, which answers your question">
+    <h2>VLM vs. LVLM</h2>
+    <img class="diagram" src="../docs/images/02-vlm-vs-lvlm.png" alt="Same chest X-ray: a matching VLM scores captions you give it; an LVLM like MedGemma answers your question in words">
     <aside class="notes">
-      Think of it as eyes, a translator, and a talker. The eyes, the vision encoder, turn the image into numbers. The translator turns those numbers into something the language model understands. The talker, a large language model like the one behind a chatbot, reads that plus your question and writes the answer.
-      A medical VLM is the same idea, trained on medical images and the reports doctors wrote about them.
+      A VLM is any AI that connects pictures and words. Same X-ray, two kinds of model.
+      Top: a matching model like CheXzero or BiomedCLIP. You hand it captions and it scores how well each one fits. It picks the best match, but it can't answer a question you didn't write a caption for.
+      Bottom: a large VLM, an LVLM, like MedGemma. It's built on a chatbot-style language model, so you ask anything and it answers in words. Much more useful, but it can also sound confident when it's wrong. That's the kind this talk is about.
+      The numbers and the answer here are made-up examples. How these models work inside is in the lab's onboarding VLM path.
     </aside>
   </section>
   <section>

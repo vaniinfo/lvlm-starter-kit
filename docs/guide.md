@@ -12,7 +12,7 @@ Good to know: the onboarding's hands-on tutorial currently needs a paid Gemini a
 
 ## Agenda
 
-1. [Three kinds of medical AI models](#1-three-kinds-of-medical-ai-models) — classifiers, segmentation models and VLMs, then how a VLM works
+1. [Three kinds of medical AI models](#1-three-kinds-of-medical-ai-models) — classifiers, segmentation models and VLMs, then VLM vs. LVLM
 2. [Our LVLM projects fall into three categories of medical imaging](#2-our-lvlm-projects-fall-into-three-categories-of-medical-imaging) — X-ray, CT, MRI, and the 3D CT gap
 3. [How to approach a project: try first, train later](#3-how-to-approach-a-project-try-first-train-later) — where new students should start, my own path, your first project, and better prompts
 4. [How results are scored](#4-how-results-are-scored) — caught it, missed it, false alarm, and AUC
@@ -35,23 +35,13 @@ Classifiers and segmentation models are older, narrower AI tools, each trained f
 
 This guide focuses on the third kind, vision-language models, and on how they team up with the other two.
 
-### Zooming in: what is a vision-language model?
-
-*Quick recap: if you've done the onboarding VLM path, skim this part.*
+### Zooming in: VLM vs. LVLM, by example
 
 A vision-language model (VLM) is an AI that connects pictures and words. The big ones that can actually talk about an image, built on a large language model like the AI behind a chatbot, are called large vision-language models (LVLMs) or multimodal LLMs. You show one an image, ask a question in plain English, and it answers in plain English. MedGemma is an example. This guide is mostly about those.
 
-Think of it as two brains wired together:
+![VLM vs. LVLM: the same chest X-ray, two kinds of answer](images/02-vlm-vs-lvlm.png)
 
-- **The eyes** (a vision encoder) turn an image into a list of numbers that capture what is in it: shapes, edges, bright spots, dark spots.
-- **The talker** (a large language model, like the AI behind a chatbot) reads those numbers alongside your question and writes an answer.
-- **The translator** (a small connector layer) sits in between so the talker can understand what the eyes saw.
-
-![How a vision-language model turns a scan and a question into an answer](images/02-how-a-vlm-works.png)
-
-The scan goes through the eyes and the translator; your question goes straight to the talker, which combines both to write the answer.
-
-A medical VLM is the same idea, trained on medical images and the reports doctors wrote about them. Ask "Is there fluid around the lungs in this X-ray?" and it should answer, point to where, and maybe write a draft report.
+A matching VLM can only pick from captions you hand it. An LVLM answers your question in its own words, which is more useful and also riskier, because it can make things up. How these models work inside is covered in the onboarding VLM path.
 
 **Why medicine cares:** hospitals take billions of scans a year and there are not enough radiologists (scan-reading doctors) to keep up. An AI that drafts a report, flags an urgent case, or gives a second opinion could save time and catch things people miss. It also has to be very reliable, because a wrong answer can hurt a patient.
 
@@ -315,7 +305,7 @@ Before you start, check whether someone has already answered your question (sear
 
 ## 11. Advanced: training and fine-tuning options
 
-This is steps 4 and 5 of the ladder. Come back to it after you've tried an existing model, better prompts, and tools on your own test set. The options run from lightest to heaviest.
+This is steps 4 and 5 of the ladder. Come back to it after you've tried an existing model, better prompts, and tools on your own test set. The options run from lightest to heaviest. Quick names for an LVLM's three parts: the "eyes" (vision encoder) turn the image into numbers, the "talker" (language model) writes the answer, and the "translator" (connector) links the two.
 
 | Option | What gets trained | Data you need | Computer power | When it fits |
 | --- | --- | --- | --- | --- |
