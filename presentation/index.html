@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LVLM Research Projects in Medical Imaging: How to Ramp Up</title>
+<link rel="stylesheet" href="lib/reset.css">
+<link rel="stylesheet" href="lib/reveal.css">
+<link rel="stylesheet" href="lib/theme/white.css">
+<style>
+  :root { --accent: #2b6cb0; --good: #2f855a; --bad: #c53030; --warn: #b7791f; }
+  .reveal h1 { font-size: 1.9em; }
+  .reveal h2 { font-size: 1.35em; }
+  .reveal p, .reveal li { font-size: 0.8em; line-height: 1.35; }
+  .reveal img.diagram { max-height: 520px; max-width: 100%; margin: 0.2em auto; border: none; box-shadow: none; }
+  .reveal img.diagram.tall { max-height: 560px; }
+  .reveal .small { font-size: 0.55em; color: #555; }
+  .reveal .muted { color: #666; }
+  .reveal .tag { display: inline-block; font-size: 0.5em; padding: 0.15em 0.6em; border-radius: 1em; background: #ebf4ff; color: var(--accent); vertical-align: middle; }
+  /* quick checks */
+  .quiz { max-width: 820px; margin: 0 auto; }
+  .quiz button { display: block; width: 100%; margin: 0.3em 0; padding: 0.45em 0.8em; font: inherit; font-size: 0.7em; text-align: left;
+                 background: #f7fafc; border: 2px solid #cbd5e0; border-radius: 10px; cursor: pointer; }
+  .quiz button:hover { border-color: var(--accent); }
+  .quiz button.right { background: #f0fff4; border-color: var(--good); }
+  .quiz button.wrong { background: #fff5f5; border-color: var(--bad); }
+  .quiz .feedback { min-height: 3.2em; font-size: 0.62em; margin-top: 0.5em; text-align: left; }
+  /* cutoff slider */
+  .slider-demo { max-width: 900px; margin: 0 auto; }
+  .slider-demo input[type=range] { width: 100%; accent-color: var(--accent); }
+  .slider-demo .scores { display: flex; gap: 1em; justify-content: center; margin-top: 0.4em; }
+  .slider-demo .score { flex: 1; padding: 0.2em 0.3em; border-radius: 10px; background: #f7fafc; }
+  .slider-demo .score b { display: block; font-size: 1.05em; line-height: 1.2; }
+  .slider-demo .score span { display: block; font-size: 0.45em; line-height: 1.25; color: #555; }
+  .slider-demo p { margin: 0.2em 0; }
+  .slider-demo table { margin: 0.4em auto 0; font-size: 0.5em; border-collapse: collapse; }
+  .slider-demo td, .slider-demo th { padding: 0.2em 0.8em; border: 1px solid #e2e8f0; }
+  .bigbutton { display: inline-block; margin-top: 0.5em; padding: 0.5em 1em; background: var(--accent); color: white !important; border-radius: 10px; font-size: 0.75em; }
+  .two-col { display: flex; gap: 1.2em; text-align: left; }
+  .two-col > div { flex: 1; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<!-- ============ Title ============ -->
+<section>
+  <h1>LVLM Research Projects in Medical Imaging</h1>
+  <h3 class="muted">How to Ramp Up</h3>
+  <p>Vani</p>
+  <p class="small">Press <b>S</b> for speaker notes · arrow keys to move · <b>F</b> for full screen</p>
+  <aside class="notes">
+    Welcome. Today: how AI can read medical scans, how I got started in this research, and exactly how you can start too, with a project you can run this week on a free computer.
+    Everything is in the GitHub repo lvlm-starter-kit: this presentation, a full written guide, and a ready-to-run notebook.
+  </aside>
+</section>
+
+<!-- ============ Agenda ============ -->
+<section>
+  <h2>What we'll cover</h2>
+  <ol>
+    <li>Three kinds of medical AI models</li>
+    <li>X-ray, CT and MRI: three levels of difficulty</li>
+    <li>How to approach a project: try first, train later</li>
+    <li>How results are scored</li>
+    <li>Available models and agents</li>
+    <li>My two projects</li>
+    <li>Public datasets, ethics, and finding a research question</li>
+  </ol>
+  <aside class="notes">
+    Quick roadmap. We start with the basics, then the practical part: how to start a project and how to tell whether a model is any good. Then the landscape of models and data, my own projects, and how to find your own research question.
+    The advanced material on training models is in the written guide; we'll only touch on it at the end.
+  </aside>
+</section>
+
+<!-- ============ 1. Three kinds of models ============ -->
+<section>
+  <section>
+    <h2>Three kinds of medical AI models</h2>
+    <img class="diagram" src="../docs/images/01-three-kinds-of-models.png" alt="Classifier gives a label, segmentation model gives an outline, VLM gives words">
+    <aside class="notes">
+      Same scan, three kinds of model, three kinds of answer. A classifier answers WHAT: pneumonia yes or no. A segmentation model answers WHERE: it marks every pixel of the lungs. A vision-language model, a VLM, answers in WORDS and can take any question.
+      The older narrow models are often more accurate at their one job, but they can't explain anything. VLMs can talk but are less precise. That's why good projects combine them. This talk focuses on VLMs.
+    </aside>
+  </section>
+  <section>
+    <h2>How a vision-language model works</h2>
+    <img class="diagram" src="../docs/images/02-how-a-vlm-works.png" alt="Scan goes through the eyes and translator to the talker, which answers your question">
+    <aside class="notes">
+      Think of it as eyes, a translator, and a talker. The eyes, the vision encoder, turn the image into numbers. The translator turns those numbers into something the language model understands. The talker, a large language model like the one behind a chatbot, reads that plus your question and writes the answer.
+      A medical VLM is the same idea, trained on medical images and the reports doctors wrote about them.
+    </aside>
+  </section>
+  <section>
+    <h2>Quick check</h2>
+    <div class="quiz" data-quiz>
+      <p>You want the computer to <b>outline exactly where the lungs are</b>. Which kind of model fits best?</p>
+      <button data-answer="wrong" data-why="A classifier gives a label (yes/no or a category). It doesn't say where.">A classifier</button>
+      <button data-answer="right" data-why="Right: a segmentation model marks every pixel that belongs to the lungs. It answers WHERE.">A segmentation model</button>
+      <button data-answer="wrong" data-why="A VLM can describe the lungs in words, but it isn't precise enough to outline them pixel by pixel.">A vision-language model</button>
+      <div class="feedback"></div>
+    </div>
+    <aside class="notes">
+      Ask the room first, then click. Answer: segmentation. This checks they got the "what / where / words" idea from the first diagram.
+    </aside>
+  </section>
+</section>
+
+<!-- ============ 2. X-ray, CT, MRI ============ -->
+<section>
+  <section>
+    <h2>Our projects fall into three categories</h2>
+    <img class="diagram" src="../docs/images/03-xray-ct-mri.png" alt="X-ray is one flat image, CT is hundreds of slices, MRI is several stacks and sometimes video">
+    <aside class="notes">
+      Each step from X-ray to CT to MRI adds a dimension. An X-ray is one flat picture, like a photo. A CT is hundreds of thin slices, like a loaf of bread. An MRI is several stacks taken different ways, and a heart MRI is basically a video.
+      The order is a simplification: it mostly reflects the number of dimensions and how much public data exists. Not every MRI task is harder than every CT task.
+    </aside>
+  </section>
+  <section>
+    <h2>The 3D CT gap</h2>
+    <ul>
+      <li class="fragment">Most popular VLMs were built for <b>flat pictures</b>: they only flip through a sample of a CT's slices</li>
+      <li class="fragment">The few <b>true 3D models</b> still struggle with exact positions and sizes</li>
+      <li class="fragment">Most of them cover <b>chest CT</b>, because that's where the main public dataset is</li>
+      <li class="fragment">Specific tasks, like measuring airways, are thinner still: <b>room for new research</b></li>
+    </ul>
+    <aside class="notes">
+      Compared with 2D chest X-ray, 3D CT is still largely underserved by modern VLMs. MRI is even further behind.
+      That gap is exactly why CT is a focus of our projects: when the tools are weaker, there's more room for a student to contribute something new.
+    </aside>
+  </section>
+</section>
+
+<!-- ============ 3. How to approach a project ============ -->
+<section>
+  <section>
+    <h2>Try first, train later</h2>
+    <img class="diagram" src="../docs/images/05-try-first-train-later-ladder.png" alt="Ladder: try as-is, better prompts, tools, small add-on, fine-tune">
+    <aside class="notes">
+      The smart order: test what already exists before training anything. Like cooking: taste the store-bought sauce first, then season it, and only make your own if nothing else works.
+      Step 0 is the most important: build a small test set of your own images with the correct answers. Every step gets judged on that same test. Only climb a rung if the one below isn't good enough.
+    </aside>
+  </section>
+  <section>
+    <h2>My path: start easy, go deep, then broaden</h2>
+    <img class="diagram tall" src="../docs/images/04-my-path.png" alt="X-ray first, then CT, then MRI; my first project on X-ray, my current project on lung CT">
+    <aside class="notes">
+      If you're new, start with chest X-ray: one flat image, runs fast on a free GPU, lots of models and open data. That's what I did. Then I moved to lung CT, which is harder and less explored.
+      Two honest cautions: start with fully open data, because MIMIC-CXR needs an ethics course and approval. And chest X-ray is the most crowded area, so it's great for learning but hard to stand out in. Go deep in one area before spreading out.
+    </aside>
+  </section>
+  <section>
+    <h2>Your first project</h2>
+    <img class="diagram" src="../docs/images/06-first-project.png" alt="Get the data, build a test set, ask the model, score it">
+    <p><a class="bigbutton" href="https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/medgemma-practice/medgemma_practice.ipynb" target="_blank">Live demo: open the MedGemma practice notebook</a></p>
+    <aside class="notes">
+      This is step 1 of the ladder, done for real. One question: is there fluid around the lungs in this X-ray? Twenty X-rays: ten with fluid, ten healthy. Ask MedGemma, then score it.
+      LIVE DEMO: click the button. Show the "Before you start" box, run the setup cell, and show Step 2's grid of 20 X-rays. Ask the class if they can spot the fluid. If time and Wi-Fi allow, run Step 3 on a few images. Otherwise just show the cells.
+      Remind them: turn on the T4 GPU, accept the MedGemma terms on Hugging Face, and use File, Save a copy in Drive.
+    </aside>
+  </section>
+  <section>
+    <h2>Better prompts: same model, different wording</h2>
+    <img class="diagram" src="../docs/images/07-better-prompts.png" alt="Four prompt styles and the tuning set / confirm set rule">
+    <aside class="notes">
+      The wording of the question alone can change the score. The notebook's optional Step 5 compares four styles: plain yes/no, giving a definition, describe-then-decide, and a confidence number from 0 to 100.
+      Two rules keep it honest. Use enough images, so a "win" isn't luck. And never pick the winner and grade it on the same images: choose on a tuning set, then confirm on fresh images.
+    </aside>
+  </section>
+</section>
+
+<!-- ============ 4. Scoring ============ -->
+<section>
+  <section>
+    <h2>How results are scored</h2>
+    <img class="diagram" src="../docs/images/08-how-results-are-scored.png" alt="Caught it, missed it, false alarm, correctly cleared; accuracy, sensitivity, specificity, AUC">
+    <aside class="notes">
+      Every yes/no answer lands in one of four boxes. Caught it, missed it, false alarm, or correctly cleared. In medicine the kind of mistake matters: missing a sick patient is usually worse than a false alarm.
+      Sensitivity: of the really sick, how many did we catch. Specificity: of the healthy, how many did we clear. AUC: one number for how well the model ranks sick above healthy at every cutoff. 0.5 is a coin flip, 1.0 is perfect. My X-ray project used AUC.
+    </aside>
+  </section>
+  <section>
+    <h2>Try it: move the cutoff</h2>
+    <div class="slider-demo">
+      <p class="small">Each dot is one X-ray, placed by the model's confidence score (0 to 100). Images at or above the cutoff count as "yes". Made-up example scores.</p>
+      <svg id="dots" viewBox="0 0 900 150" width="100%"></svg>
+      <input id="cutoff" type="range" min="0" max="100" value="50" aria-label="Cutoff">
+      <p class="small">Cutoff: <b id="cutoffValue">50</b></p>
+      <div class="scores">
+        <div class="score"><b id="sens">-</b><span>Sensitivity: real cases caught</span></div>
+        <div class="score"><b id="spec">-</b><span>Specificity: healthy cleared</span></div>
+        <div class="score"><b id="acc">-</b><span>Accuracy</span></div>
+      </div>
+      <table>
+        <tr><th></th><th>Model says yes</th><th>Model says no</th></tr>
+        <tr><th>Really sick</th><td id="tp">-</td><td id="fn">-</td></tr>
+        <tr><th>Really healthy</th><td id="fp">-</td><td id="tn">-</td></tr>
+      </table>
+    </div>
+    <aside class="notes">
+      Interactive. Drag the slider slowly to the left: the model says "yes" more easily, so it catches more sick patients, but it raises more false alarms. Drag to the right: fewer false alarms, more misses.
+      Ask: where would you put the cutoff for a screening test, where missing a sick patient is dangerous? Most will move it left. There's no cutoff that's perfect at both, and that trade-off is the whole point.
+      AUC measures how well the two groups are separated across ALL cutoffs, so it doesn't depend on where you put the slider.
+    </aside>
+  </section>
+  <section>
+    <h2>Quick check</h2>
+    <div class="quiz" data-quiz>
+      <p>Only 5 in 100 X-rays show disease. A model says <b>"healthy" every single time</b> and scores <b>95% accuracy</b>. Is it a good model?</p>
+      <button data-answer="wrong" data-why="95% sounds great, but it never catches a single sick patient.">Yes, 95% is excellent</button>
+      <button data-answer="right" data-why="Right: its sensitivity is 0%. It misses every real case. That's why you always check sensitivity and specificity, not just accuracy.">No, it's useless</button>
+      <button data-answer="wrong" data-why="Not quite. Its specificity is 100%, but its sensitivity is 0%: it catches nothing.">It depends on the specificity</button>
+      <div class="feedback"></div>
+    </div>
+    <aside class="notes">
+      The classic accuracy trap. Answer: useless, sensitivity is zero. This is why the notebook reports all three numbers.
+    </aside>
+  </section>
+</section>
+
+<!-- ============ 5. Models and agents ============ -->
+<section>
+  <section>
+    <h2>Available models</h2>
+    <img class="diagram tall" src="../docs/images/09-available-models.png" alt="Agents on top, all-rounders in the middle, specialists for X-ray, CT and MRI at the bottom">
+    <aside class="notes">
+      Three layers. All-rounders like MedGemma handle many scan types. Specialists are built for one: CheXagent and MAIRA-2 for chest X-ray, CT-CHAT and Merlin for CT, a handful for MRI. Agents sit on top and use the others as tools.
+      A "medical" label isn't magic: in one 2026 study LLaVA-Med did much worse than plain LLaVA, while MedGemma did beat its base model. Always test against a general model too.
+    </aside>
+  </section>
+  <section>
+    <h2>Agents: an AI that manages a team</h2>
+    <img class="diagram" src="../docs/images/10-how-an-agent-works.png" alt="A manager AI picks specialist tools, a checker compares results, then a final answer">
+    <aside class="notes">
+      An agent isn't one model. A language model acts as the manager: it reads the question, picks specialist tools, runs them, checks the results, and writes the answer. Like an attending physician running a care team.
+      Because every step is recorded, a doctor can see how it got there. MedRAX and CXRAgent are chest X-ray agents. CT agents like RadAgent and CT-Flow are newer.
+    </aside>
+  </section>
+</section>
+
+<!-- ============ 6. My projects ============ -->
+<section>
+  <section>
+    <h2>My chest X-ray project</h2>
+    <img class="diagram" src="../docs/images/11-cxr-project.png" alt="Draft with MedGemma, check with CheXagent, update, radiologist review">
+    <aside class="notes">
+      One VLM writes the first draft and a second VLM double-checks it, the way a resident's report gets checked by a senior doctor. MedGemma drafts findings for each condition, CheXagent confirms or rejects each one, and the verdicts update the draft. A radiologist grades the final findings.
+      Separately, I benchmarked MedGemma, CheXagent and MAIRA-2 with AUC on several datasets. Next: conditions the models struggle with.
+    </aside>
+  </section>
+  <section>
+    <h2>My lung CT project</h2>
+    <img class="diagram" src="../docs/images/12-lung-ct-project.png" alt="Check scan, then measure, classify and look in parallel, evidence table, cross-check, final report, clinician review">
+    <aside class="notes">
+      Each step answers a different question with the best tool: segmentation measures where and how much, classifiers say what, and a VLM describes. Everything lands in one evidence table, and the report may only claim what the table supports. It's allowed to say "cannot tell".
+      A real finding: general VLMs like MedGemma and Hulu-Med said "absent" to every finding in our tests, so they're shown but not trusted. That was a small set of cases, so it's a warning sign, not proof. Next we're trying NV-Reason-CT, built to read the whole 3D scan.
+    </aside>
+  </section>
+</section>
+
+<!-- ============ 7. Data, ethics, research question ============ -->
+<section>
+  <section>
+    <h2>Public datasets: how big?</h2>
+    <img class="diagram" src="../docs/images/13-dataset-sizes.png" alt="Dataset sizes on a log scale: X-ray hundreds of thousands, CT tens of thousands, MRI far fewer">
+    <aside class="notes">
+      The sizes explain a lot. The largest X-ray set is about 15 times the largest CT set and over a thousand times the heart MRI sets. That's the same order as how mature each group of models is.
+      Units differ: one CT scan holds hundreds of slices. And brain MRI collections are bigger than these heart sets.
+    </aside>
+  </section>
+  <section>
+    <h2>Public datasets: how hard to get?</h2>
+    <img class="diagram" src="../docs/images/14-dataset-access.png" alt="Open download, sign up and agree, ethics course first">
+    <aside class="notes">
+      How easy a dataset is to get matters as much as its size. Open sets download right away. Most others need a sign-up and a promise to use the data only for research. PhysioNet's credentialed sets, like MIMIC-CXR, need a CITI ethics course and an approval that takes days, and students must name a supervisor. So start with column 1.
+    </aside>
+  </section>
+  <section>
+    <h2>Quick check</h2>
+    <div class="quiz" data-quiz>
+      <p>You want to start <b>tonight</b>, with no sign-up. Which dataset can you download right away?</p>
+      <button data-answer="wrong" data-why="MIMIC-CXR needs a CITI ethics course and PhysioNet approval first, which takes several days.">MIMIC-CXR</button>
+      <button data-answer="right" data-why="Right: NIH ChestX-ray14 is open. The MedGemma practice notebook downloads it for you.">ChestX-ray14 (NIH)</button>
+      <button data-answer="wrong" data-why="CT-RATE needs a Hugging Face sign-up and agreeing to its terms. Quick, but not instant.">CT-RATE</button>
+      <div class="feedback"></div>
+    </div>
+    <aside class="notes">Answer: ChestX-ray14. That's why the practice notebook uses it.</aside>
+  </section>
+  <section>
+    <h2>Ethics and safety</h2>
+    <img class="diagram" src="../docs/images/15-ethics-and-safety.png" alt="Protect privacy, watch for bias, hallucination, help not replace">
+    <aside class="notes">
+      Four rules for every project, even a first one. Protect privacy: these are real patients' scans. Watch for bias: a model trained at one hospital can fail at another. Hallucination: a VLM can confidently describe things that aren't there. And AI helps doctors; it doesn't replace them.
+      One more habit: if a result looks too good to be true, check that the same patient isn't in both your training and test sets.
+    </aside>
+  </section>
+  <section>
+    <h2>How to find a research question</h2>
+    <img class="diagram" src="../docs/images/16-find-a-research-question.png" alt="Where do models fail, what is understudied, what can you test with open data">
+    <aside class="notes">
+      A good student research question is small, specific, and testable with data you can actually get. Ask three questions: where do existing models fail, what's understudied, and what can you test with open data.
+      Start from the mistakes in your own first project. And repeating someone else's result on different data is real research too.
+    </aside>
+  </section>
+</section>
+
+<!-- ============ Advanced (brief) ============ -->
+<section>
+  <h2>Later: training your own model</h2>
+  <div class="two-col">
+    <div><img class="diagram" src="../docs/images/17-what-gets-trained.png" alt="Linear probe, LoRA, full fine-tuning"></div>
+    <div><img class="diagram" src="../docs/images/20-train-test-split.png" alt="Train on most images, keep a test set and an outside test set"></div>
+  </div>
+  <p class="small">Steps 4 and 5 of the ladder. Details in the guide, section 11.</p>
+  <aside class="notes">
+    Only after the ladder's first three steps. The lighter the option, the less of the model learns: a linear probe trains a tiny classifier, LoRA adds small add-ons, full fine-tuning changes everything and needs lots of data.
+    Whatever you do, lock some images away before training, ideally including some from another hospital. Testing on training images is like grading a test with the answer key in hand.
+  </aside>
+</section>
+
+<!-- ============ Discussion ============ -->
+<section>
+  <h2>Let's discuss</h2>
+  <ol>
+    <li class="fragment">If an AI and a doctor disagree about a scan, who should decide, and why?</li>
+    <li class="fragment">Why might a general AI sometimes beat a medical-specialist AI?</li>
+    <li class="fragment">What could go wrong if an AI is trained mostly on scans from one hospital?</li>
+  </ol>
+  <aside class="notes">Reveal one question at a time and take a few answers for each. These match the discussion questions in the guide.</aside>
+</section>
+
+<!-- ============ Get started ============ -->
+<section>
+  <h2>Get started this week</h2>
+  <p><a href="https://github.com/vaniinfo/lvlm-starter-kit" target="_blank">github.com/vaniinfo/lvlm-starter-kit</a></p>
+  <ul>
+    <li>Read the <b>guide</b>: docs/guide.md</li>
+    <li>Run the <b>MedGemma practice</b> notebook in Colab</li>
+    <li>Write down where the model was wrong. That's your first research question.</li>
+  </ul>
+  <p><a class="bigbutton" href="https://colab.research.google.com/github/vaniinfo/lvlm-starter-kit/blob/main/medgemma-practice/medgemma_practice.ipynb" target="_blank">Open the notebook</a></p>
+  <aside class="notes">Leave this slide up during questions so people can write down the link.</aside>
+</section>
+
+</div></div>
+
+<script src="lib/reveal.js"></script>
+<script src="lib/plugin/notes.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: 'c/t', plugins: [RevealNotes], width: 1100, height: 760 });
+
+  // ---- Quick checks: click an answer to see whether it's right and why ----
+  document.querySelectorAll('[data-quiz]').forEach(quiz => {
+    const feedback = quiz.querySelector('.feedback');
+    quiz.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        quiz.querySelectorAll('button').forEach(b => b.classList.remove('right', 'wrong'));
+        btn.classList.add(btn.dataset.answer);
+        feedback.textContent = btn.dataset.why;
+      });
+    });
+  });
+
+  // ---- Cutoff slider: made-up confidence scores for 20 sick and 20 healthy X-rays ----
+  const sick    = [93, 89, 86, 82, 78, 75, 72, 70, 67, 64, 61, 58, 55, 52, 48, 44, 40, 35, 29, 22];
+  const healthy = [ 4,  8, 11, 14, 17, 20, 24, 27, 30, 33, 37, 41, 45, 49, 53, 57, 62, 68, 74, 81];
+  const svg = document.getElementById('dots');
+  const slider = document.getElementById('cutoff');
+  const X = v => 40 + v * 8.2;   // score 0..100 -> x position
+  const pct = (a, b) => Math.round(100 * a / b) + '%';
+
+  function draw() {
+    const c = Number(slider.value);
+    const tp = sick.filter(s => s >= c).length, fn = sick.length - tp;
+    const fp = healthy.filter(s => s >= c).length, tn = healthy.length - fp;
+    let html = '<text x="0" y="45" font-size="16" fill="#333">Sick</text>' +
+               '<text x="0" y="105" font-size="16" fill="#333">Healthy</text>' +
+               '<line x1="40" x2="860" y1="135" y2="135" stroke="#aaa"/>';
+    [0, 25, 50, 75, 100].forEach(t => {
+      html += `<text x="${X(t)}" y="150" font-size="12" text-anchor="middle" fill="#666">${t}</text>`;
+    });
+    sick.forEach(s => {
+      const caught = s >= c;
+      html += `<circle cx="${X(s)}" cy="40" r="9" fill="${caught ? '#2f855a' : '#c53030'}" opacity="0.85"><title>sick, score ${s}: ${caught ? 'caught' : 'MISSED'}</title></circle>`;
+    });
+    healthy.forEach(s => {
+      const alarm = s >= c;
+      html += `<circle cx="${X(s)}" cy="100" r="9" fill="${alarm ? '#dd6b20' : '#2f855a'}" opacity="0.85"><title>healthy, score ${s}: ${alarm ? 'FALSE ALARM' : 'cleared'}</title></circle>`;
+    });
+    html += `<line x1="${X(c)}" x2="${X(c)}" y1="15" y2="125" stroke="#2b6cb0" stroke-width="3" stroke-dasharray="6 4"/>` +
+            `<text x="${X(c) + 6}" y="20" font-size="13" fill="#2b6cb0">cutoff</text>`;
+    svg.innerHTML = html;
+    document.getElementById('cutoffValue').textContent = c;
+    document.getElementById('sens').textContent = pct(tp, sick.length);
+    document.getElementById('spec').textContent = pct(tn, healthy.length);
+    document.getElementById('acc').textContent = pct(tp + tn, sick.length + healthy.length);
+    document.getElementById('tp').textContent = tp + ' caught';
+    document.getElementById('fn').textContent = fn + ' missed';
+    document.getElementById('fp').textContent = fp + ' false alarms';
+    document.getElementById('tn').textContent = tn + ' cleared';
+  }
+  slider.addEventListener('input', draw);
+  draw();
+</script>
+</body>
+</html>
