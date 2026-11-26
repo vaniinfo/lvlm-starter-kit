@@ -93,7 +93,7 @@ Then climb the ladder below, and only move up a rung if the one below doesn't sc
 
 1. **Try it as-is ("zero-shot").** Run a few ready-made models, such as MedGemma, CheXagent, and a general model like GPT or Claude, on your test set with no changes. This takes hours, not weeks.
 2. **Improve the instructions (prompting).** Give clearer directions, show two or three worked examples in the prompt, or ask the model to explain step by step before answering.
-3. **Add tools or reference material.** Wrap the model in an agent that calls specialist tools (like MedRAX does), or let it look up similar past cases or guidelines (this is called retrieval, or RAG). Still no training needed.
+3. **Add tools.** Build a multi-model agent pipeline: an AI manager that calls other specialist models as tools, like MedRAX does. Still no training needed.
 4. **Train a small add-on.** Keep the model frozen and train only a tiny piece on your data. This is cheap and can run on one graphics card (GPU).
 5. **Fine-tune more of the model.** Only when the steps above fall short and you have enough good data.
 
